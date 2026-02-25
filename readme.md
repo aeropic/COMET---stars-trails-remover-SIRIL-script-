@@ -37,8 +37,11 @@ You **must** provide a star reference image. (Orange warning)
 * The **Load Button** becomes green and shows the total amount of detected stars (e.g., `✅ 26 STARS DETECTED`).
 * <img width="422" height="517" alt="stars" src="https://github.com/user-attachments/assets/77264139-4c0e-4411-93e5-886e1126caf4" />
 
-* play with the **sigma slider** to dynamically increase (slider to the left)/decrease (to the right) the star count to get a reasonable amount (e.g., `✅ 352 STARS DETECTED`). This is the number of trails that will be erased in the picture, don't target too high numbers !
+* if the **show stars centers** is ticked, yellow circles are drawn in the picture. THey reflect the actual position of the **star trail radius** slider
 
+* play with the **sigma slider** to dynamically increase (slider to the left)/decrease (to the right) the star count to get a reasonable amount (e.g., `✅ 352 STARS DETECTED`). This is the number of trails that will be erased in the picture, don't target too high numbers !
+When you start seeing clusters of stars around the comet nucleus, this means you are at the limit of stars detection noise...
+<img width="1081" height="792" alt="cluster" src="https://github.com/user-attachments/assets/eae85c10-91d3-462e-941b-ea86fb548798" />
 
 
 ### 2. Defining the Trail (The Vector)
@@ -53,6 +56,7 @@ You **must** provide a star reference image. (Orange warning)
 * **Alt + Left Click**: Draw a "Restore" mask over the aeras you want to keep unchanged (eg: comet's head or tail).
 * **Mouse Wheel**: Change the brush size.
 * Red circles indicate areas that will be restored from original data, keeping the area intact.
+<img width="1701" height="895" alt="before" src="https://github.com/user-attachments/assets/05463103-13dd-412d-a867-8b09e9631a85" />
 
 ### 4. run the script
 * **RUN**:this will run the sript and erase the trails. It may last up to one minute. At the end you get this
@@ -61,6 +65,8 @@ You **must** provide a star reference image. (Orange warning)
 * press **OK** and the display is updated. See the updated image here after
 
 * note 1:  it is streched, when displayed in normal conditions, 90% of the trails are gone!
+  <img width="1204" height="774" alt="final_no_strech" src="https://github.com/user-attachments/assets/95cebbb6-257a-48b2-9ddf-5c7dec482daf" />
+
 * note 2: some black artifacts are left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges
 
 <img width="1164" height="816" alt="ZLlpq2dzE9 pngbrush30" src="https://github.com/user-attachments/assets/55c90858-a6b1-4cd7-a683-5ebc5589fc03" />
@@ -86,6 +92,7 @@ You **must** provide a star reference image. (Orange warning)
 
 
 ---
+
 
 
 
