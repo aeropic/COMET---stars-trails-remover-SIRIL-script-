@@ -33,9 +33,12 @@ You **must** provide a star reference image. (Orange warning)
 <img width="715" height="643" alt="nostars" src="https://github.com/user-attachments/assets/651be78a-5232-4021-8fb1-28718ad2ada4" />
 
 
-* **Optimal Reference:** Use a "Star-only" mask obtained from the stacked on stars picture (starmask.Fit). A normal starmask should work, but, if neede you can  slightly stretch it to make  the stars bearely visible.
-* The **Load Button** becomes green and shows the total amount of detected stars (e.g., `✅ 3452 STARS DETECTED`).
-* play with the **sigma slider** to dynamically updates the star count to get a reasonable amount (e.g., `✅ 352 STARS DETECTED`). This is the number of trails that will be erased in teh picture, don't target too high numbers !
+* **Optimal Reference:** Use a "Star-only" mask obtained from the stacked on stars picture (starmask.Fit). A normal starmask should work, but, if needed you can  slightly stretch a starmask to make  the stars bearely visible. You may also use a raw image saved in fit or tiff (not tested yet)
+* The **Load Button** becomes green and shows the total amount of detected stars (e.g., `✅ 26 STARS DETECTED`).
+* <img width="422" height="517" alt="stars" src="https://github.com/user-attachments/assets/77264139-4c0e-4411-93e5-886e1126caf4" />
+
+* play with the **sigma slider** to dynamically increase (slider to the left)/decrease (to the right) the star count to get a reasonable amount (e.g., `✅ 352 STARS DETECTED`). This is the number of trails that will be erased in the picture, don't target too high numbers !
+
 
 
 ### 2. Defining the Trail (The Vector)
@@ -43,12 +46,22 @@ You **must** provide a star reference image. (Orange warning)
 * **Shift + Left Click**: Set the end of the same star trail (Green line).
 * This defines the **length and angle** applied to all detected stars.
 * start and end points can be modified if needed (just repeat the Ctrl + click or shift+click)
+<img width="1148" height="695" alt="trail" src="https://github.com/user-attachments/assets/6f551c97-7759-4d7d-92d4-825035eb6853" />
 
 ### 3. Local Protection (Comet Mask)
 * **Alt + Left Click**: Draw a "Restore" mask over the aeras you want to keep unchanged (eg: comet's head or tail).
 * **Mouse Wheel**: Change the brush size.
 * Red circles indicate areas that will be restored from original data, keeping the area intact.
 
+### 4. run the script
+* **RUN**:this will run the sript and erase the trails. It may last up to one minute. At the end you get this
+<img width="422" height="517" alt="3hfd6zy5kD pngclean-finish" src="https://github.com/user-attachments/assets/6499a414-2108-4830-a231-31553d5b9d22" />
+press **OK** and the display is updated. See the updated image here after (note it is streched, when displayed in normal conditions, 90% of the trails are gone!)
+<img width="1164" height="816" alt="ZLlpq2dzE9 pngbrush30" src="https://github.com/user-attachments/assets/55c90858-a6b1-4cd7-a683-5ebc5589fc03" />
+
+
+* **UNDO / REDO**: does what they say :-)
+* **SAVE trailless image**: when you're happy with the final result. The image is saved with the same name postfixed with "**_TrailLess**"
 ---
 
 ## ⌨️ Shortcuts & Navigation
@@ -64,6 +77,7 @@ You **must** provide a star reference image. (Orange warning)
 
 
 ---
+
 
 
 
