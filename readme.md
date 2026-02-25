@@ -35,6 +35,7 @@ You **must** provide a star reference image. (Orange warning)
 
 
 * **Optimal Reference:** Use a "Star-only" mask obtained from the stacked on stars picture (starmask.Fit). A normal starmask should work, but, if needed you can  slightly stretch a starmask to make  the stars bearely visible. You may also use a raw image saved in fit or tiff (not tested yet)
+Note that **the stack reference shall be either the first comet image or the last one** So that the star is either at the beginning or at the end of the trail.
 * The **Load Button** becomes green and shows the total amount of detected stars (e.g., `✅ 26 STARS DETECTED`).
 * <img width="422" height="517" alt="stars" src="https://github.com/user-attachments/assets/77264139-4c0e-4411-93e5-886e1126caf4" />
 
@@ -47,7 +48,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 ### 2. Defining the Trail (The Vector)
 * **DISPLAY STRETCH**: if you do not see the trails enough, play with the display stretch slider. It is just used for the display!
-* **Ctrl + Left Click**: Set the start of a star trail (Blue point).
+* **Ctrl + Left Click**: Set the start of a star trail (Blue point). It shall be placed at the center of one yellow circle
 * **Shift + Left Click**: Set the end of the same star trail (Green line).
 * This defines the **length and angle** applied to all detected stars.
 * start and end points can be modified if needed (just repeat the Ctrl + click or shift+click)
@@ -91,6 +92,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 
 ---
+
 
 
 
