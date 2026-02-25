@@ -1,6 +1,6 @@
 # AEROPIC - COMET stars trails remover
 
-This Python-based utility is designed to work seamlessly with **Siril** via `sirilpy`. It allows for the precise removal of star trails in comet-aligned stacks while preserving the natural noise grain of the background, preventing "flat" or "plastic" artifacts.
+This Python-based utility is designed to work seamlessly with **Siril** via `sirilpy`. It allows for the precise removal of star trails in comet-aligned stacked picture while preserving the natural noise grain of the background, preventing "flat" or "plastic" artifacts.
 
 ---
 
@@ -10,20 +10,24 @@ To have **AEROPIC - COMET stars trails remover** appear directly in your Siril t
 
 1.  **Requirements**: 
     * Ensure **Siril 1.2.0+** is installed on your system.
-    * Your Python environment must have `sirilpy` installed: `pip install sirilpy`.
+    * Your Python environment must have `sirilpy` installed: this is done by default install of SIRIL.
 2.  **Create a Folder**: Create a folder anywhere on your computer (e.g., named `Aeropic`).
 3.  **Add the Script**: Place the `AEROPIC_comet_cleaner_utility.py` file inside this folder.
 4.  **Configure Siril**:
-    * Open **Siril** and go to **Preferences**.
+    * Open **Siril** and go to the hamburger menu **Preferences**.
     * Navigate to the **Scripts** tab.
-    * Add or paste the path to your `Aeropic` folder (link to the **folder**, not the script file itself).
+    * Add or paste the path to your `Aeropic` folder (link to the **folder**, not the script file itself). (eg : C:\Users\ALAIN\AppData\Local\siril-scripts\Aeropic)
 5.  **Restart/Refresh**: After clicking **Apply**, a new entry will appear in your **Scripts menu** containing the tool.
 
 ---
 
 ## 🚀 User Manual
 
-### 1. Loading the Reference
+### 0. Loading the comet picture
+the comet stacked image shall be opened in SIRIL
+The script will use it when opening the script from the **Scripts menu**
+
+### 1. Loading the Stars Reference
 You **must** provide a star reference image.
 * **Optimal Reference:** Use a "Star-only" mask or a slightly stretched version of your stack where stars are clearly defined.
 * The **Load Button** dynamically updates the star count based on your **Sigma** setting (e.g., `✅ 452 STARS DETECTED`).
@@ -53,3 +57,4 @@ You **must** provide a star reference image.
 
 
 ---
+
