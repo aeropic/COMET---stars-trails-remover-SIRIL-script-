@@ -64,14 +64,12 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 <img width="422" height="517" alt="3hfd6zy5kD pngclean-finish" src="https://github.com/user-attachments/assets/6499a414-2108-4830-a231-31553d5b9d22" />
 
 * press **OK** and the display is updated. See the updated image here after
+<img width="1164" height="816" alt="ZLlpq2dzE9 pngbrush30" src="https://github.com/user-attachments/assets/55c90858-a6b1-4cd7-a683-5ebc5589fc03" />
 
 * note 1:  it is streched, when displayed in normal conditions, 95% of the trails are gone! Only the really bright stars with diffraction spikes are not corrected by the script see the red arrows (the spikes are shifting during comet stacking making a wide trail...) 
   <img width="1204" height="774" alt="final_no_strech" src="https://github.com/user-attachments/assets/95cebbb6-257a-48b2-9ddf-5c7dec482daf" />
 
 * note 2: some black artifacts are left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges
-
-<img width="1164" height="816" alt="ZLlpq2dzE9 pngbrush30" src="https://github.com/user-attachments/assets/55c90858-a6b1-4cd7-a683-5ebc5589fc03" />
-
 
 * **UNDO / REDO**: does what they say :-)
 * **UNDO / REDO**: does what they say :-)
@@ -93,6 +91,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 
 ---
+
 
 
 
