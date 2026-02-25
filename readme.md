@@ -29,18 +29,20 @@ The script will use it when opening the script from the **Scripts menu**
 
 ### 1. Loading the Stars Reference
 You **must** provide a star reference image.
-* **Optimal Reference:** Use a "Star-only" mask or a slightly stretched version of your stack where stars are clearly defined.
-* The **Load Button** dynamically updates the star count based on your **Sigma** setting (e.g., `✅ 452 STARS DETECTED`).
+* **Optimal Reference:** Use a "Star-only" mask obtained from the stacked on stars picture (starmask.Fit) it shall be slightly stretched where stars are clearly visible.
+* The **Load Button** becomes green and shows the total amount of detected stars (e.g., `✅ 3452 STARS DETECTED`).
+* play with the **sigma slider** to dynamically updates the star count to get a reasonable amount (e.g., `✅ 352 STARS DETECTED`). This is the number of trails that will be erased in teh picture, don't target too high numbers !
 
 ### 2. Defining the Trail (The Vector)
 * **Ctrl + Left Click**: Set the start of a star trail (Blue point).
 * **Shift + Left Click**: Set the end of the same star trail (Green line).
 * This defines the **length and angle** applied to all detected stars.
+* start and end points can be modified if needed (just repeat the Ctrl + click or shift+click)
 
 ### 3. Local Protection (Comet Mask)
-* **Alt + Left Click**: Draw a "Restore" mask over the comet's head or tail.
+* **Alt + Left Click**: Draw a "Restore" mask over the aeras you want to keep unchanged (eg: comet's head or tail).
 * **Mouse Wheel**: Change the brush size.
-* Red circles indicate areas that will be restored from original data, keeping the comet intact.
+* Red circles indicate areas that will be restored from original data, keeping the area intact.
 
 ---
 
@@ -57,4 +59,5 @@ You **must** provide a star reference image.
 
 
 ---
+
 
