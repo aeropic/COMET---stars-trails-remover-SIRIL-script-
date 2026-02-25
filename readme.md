@@ -74,8 +74,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 * note 2: some black artifacts are left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges
 
-* **UNDO / REDO**: does what they say :-)
-* **UNDO / REDO**: does what they say :-)
+* **UNDO / REDO**: do what they say :-)
 * **CLEAN RADIUS (px)**: play with this if you see that some trails are still not completely cleaned. In the final image I used a 30px cleaning brush.
 * **SOFTNESS / BLEND %**: increases§decreases the blending effect. The higher the SOFTNESSslider , the longer the transition on the edges. With a RADIUS of 20 and a SOFTNESS of 50%,  10 central pixels are fully replaced, and 2x5 pixels on teh edges are progressively blended.
 * **SAVE trailless image**: when you're happy with the final result. The image is saved with the same name postfixed with "**_TrailLess**"
@@ -94,6 +93,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 
 ---
+
 
 
 
