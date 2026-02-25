@@ -30,12 +30,13 @@ The script will use it when opening the script from the **Scripts menu**
 
 ### 1. Loading the Stars Reference
 You **must** provide a star reference image. (Orange warning)
-<img width="1003" height="758" alt="nostars" src="https://github.com/user-attachments/assets/388e3e74-2939-4175-bfbd-75d2d3a6f031" />
+<img width="715" height="643" alt="nostars" src="https://github.com/user-attachments/assets/651be78a-5232-4021-8fb1-28718ad2ada4" />
 
-* **Optimal Reference:** Use a "Star-only" mask obtained from the stacked on stars picture (starmask.Fit) it shall be slightly stretched where stars are clearly visible.
+
+* **Optimal Reference:** Use a "Star-only" mask obtained from the stacked on stars picture (starmask.Fit). A normal starmask should work, but, if neede you can  slightly stretch it to make  the stars bearely visible.
 * The **Load Button** becomes green and shows the total amount of detected stars (e.g., `✅ 3452 STARS DETECTED`).
 * play with the **sigma slider** to dynamically updates the star count to get a reasonable amount (e.g., `✅ 352 STARS DETECTED`). This is the number of trails that will be erased in teh picture, don't target too high numbers !
-<img width="419" height="518" alt="stars" src="https://github.com/user-attachments/assets/2dc7f8f7-fb67-45a6-954c-3f1cba8d3056" />
+
 
 ### 2. Defining the Trail (The Vector)
 * **Ctrl + Left Click**: Set the start of a star trail (Blue point).
@@ -63,6 +64,7 @@ You **must** provide a star reference image. (Orange warning)
 
 
 ---
+
 
 
 
