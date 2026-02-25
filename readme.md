@@ -42,6 +42,7 @@ You **must** provide a star reference image. (Orange warning)
 
 
 ### 2. Defining the Trail (The Vector)
+* **DISPLAY STRETCH**: if you do not see the trails enough, play with the display stretch slider. It is just used for the display!
 * **Ctrl + Left Click**: Set the start of a star trail (Blue point).
 * **Shift + Left Click**: Set the end of the same star trail (Green line).
 * This defines the **length and angle** applied to all detected stars.
@@ -80,6 +81,7 @@ press **OK** and the display is updated. See the updated image here after (note 
 
 
 ---
+
 
 
 
