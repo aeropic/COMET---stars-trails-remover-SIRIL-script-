@@ -49,6 +49,8 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 ### 2. Defining the Trail (The Vector)
 * **DISPLAY STRETCH**: if you do not see the trails enough, play with the display stretch slider. It is just used for the display!
 * **Ctrl + Left Click**: Set the start of a star trail (Blue point). It shall be placed at the center of one yellow circle
+  <img width="494" height="443" alt="blue" src="https://github.com/user-attachments/assets/31524142-9d7f-41fd-81a2-490e5c791710" />
+
 * **Shift + Left Click**: Set the end of the same star trail (Green line).
 * This defines the **length and angle** applied to all detected stars.
 * start and end points can be modified if needed (just repeat the Ctrl + click or shift+click)
@@ -58,14 +60,14 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 * **Alt + Left Click**: Draw a "Restore" mask over the aeras you want to keep unchanged (eg: comet's head or tail).
 * **Mouse Wheel**: Change the brush size.
 * Red circles indicate areas that will be restored from original data, keeping the area intact.
-<img width="1701" height="895" alt="before" src="https://github.com/user-attachments/assets/05463103-13dd-412d-a867-8b09e9631a85" />
+<img width="1142" height="720" alt="before_OK" src="https://github.com/user-attachments/assets/48ae61fc-bd96-4ec5-8ae6-1934efe8150c" />
 
 ### 4. run the script
 * **RUN**:this will run the sript and erase the trails. It may last up to one minute. At the end you get this
 <img width="422" height="517" alt="3hfd6zy5kD pngclean-finish" src="https://github.com/user-attachments/assets/6499a414-2108-4830-a231-31553d5b9d22" />
 
 * press **OK** and the display is updated. See the updated image here after
-<img width="1164" height="816" alt="ZLlpq2dzE9 pngbrush30" src="https://github.com/user-attachments/assets/55c90858-a6b1-4cd7-a683-5ebc5589fc03" />
+<img width="1069" height="734" alt="after_ok" src="https://github.com/user-attachments/assets/87f63618-3994-4a39-8ec0-92feaad2dc4f" />
 
 * note 1:  it is streched, when displayed in normal conditions, 95% of the trails are gone! Only the really bright stars with diffraction spikes are not corrected by the script see the red arrows (the spikes are shifting during comet stacking making a wide trail...) 
   <img width="1204" height="774" alt="final_no_strech" src="https://github.com/user-attachments/assets/95cebbb6-257a-48b2-9ddf-5c7dec482daf" />
@@ -92,6 +94,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 
 ---
+
 
 
 
