@@ -4,7 +4,7 @@ import cv2
 from astropy.io import fits
 from scipy.ndimage import map_coordinates, maximum_filter
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
-                             QLabel, QSlider, QPushButton, QMessageBox, QHBoxLayout, QFileDialog, QCheckBox)
+                             QLabel, QSlider, QPushButton, QMessageBox, QHBoxLayout, QFileDialog, QCheckBox, QFrame)
 from PyQt6.QtCore import Qt, QTimer
 import sirilpy as s
 from sirilpy import SirilConnectionError
@@ -47,11 +47,6 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         self.setup_cv()
         self.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
 
-    def update_stats(self):
-        sample = self.data[0][::4, ::4]
-        self.disp_min = np.percentile(sample, 2); self.disp_max = np.percentile(sample, 99.9)
-        self.sld_stretch.setValue(80) 
-
     def init_ui(self):
         self.setWindowTitle("AEROPIC - COMET cleaner utility")
         self.setFixedWidth(420); self.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint)
@@ -63,7 +58,6 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         
         self.sld_r, _ = self.add_sld("STAR TRAIL RADIUS (px)", 1, 100, 20, layout)
         self.sld_soft, _ = self.add_sld("SOFTNESS / BLEND (%)", 0, 100, 50, layout)
-        
         self.sld_sens, self.lbl_sens = self.add_sld("STAR THRESHOLD (Sigma)", 5, 200, 30, layout)
         self.sld_sens.valueChanged.connect(self.update_star_count)
         
@@ -77,6 +71,22 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         self.sld_z, self.lbl_z = self.add_sld("ZOOM (%)", 1, 150, 30, layout)
         self.sld_z.valueChanged.connect(lambda v: self.lbl_z.setText(f"{v}%"))
 
+        # SECTION RACCOURCIS
+        help_frame = QFrame(); help_frame.setFrameStyle(QFrame.Shape.StyledPanel | QFrame.Shadow.Sunken)
+        help_frame.setStyleSheet("background-color: #f0f0f0; border-radius: 4px;")
+        help_lay = QVBoxLayout(help_frame)
+        help_text = QLabel(
+            "<b>SHORTCUTS:</b><br>"
+            "• <b>Ctrl + Click</b> : Set Vector Start (Blue)<br>"
+            "• <b>Shift + Click</b> : Set Vector End (Green)<br>"
+            "• <b>Alt + Click</b> : Manual Mask (Restore image)<br>"
+            "• <b>Right Click Drag</b> : Pan image<br>"
+            "• <b>Z</b> : Undo Mask | <b>Ctrl+Z</b> : Undo Data<br>"
+            "• <b>C</b> : Clear all manual masks"
+        )
+        help_text.setStyleSheet("font-size: 11px; color: #333;")
+        help_lay.addWidget(help_text); layout.addWidget(help_frame)
+
         h_nav = QHBoxLayout()
         btn_undo = QPushButton("⬅️ UNDO DATA"); btn_undo.clicked.connect(self.undo); h_nav.addWidget(btn_undo)
         btn_redo = QPushButton("REDO DATA ➡️"); btn_redo.clicked.connect(self.redo); h_nav.addWidget(btn_redo)
@@ -85,8 +95,7 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         self.btn_run = QPushButton("🚀 RUN - CLEAN STAR TRAILS")
         self.btn_run.setEnabled(False)
         self.btn_run.setStyleSheet("background: #424242; color: #888; height: 50px; font-weight: bold;")
-        self.btn_run.clicked.connect(self.run_catalog_clean)
-        layout.addWidget(self.btn_run)
+        self.btn_run.clicked.connect(self.run_catalog_clean); layout.addWidget(self.btn_run)
         
         self.btn_save = QPushButton("💾 SAVE TrailLess IMAGE")
         self.btn_save.clicked.connect(self.save_fits); layout.addWidget(self.btn_save)
@@ -97,6 +106,11 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         s = QSlider(Qt.Orientation.Horizontal); s.setRange(mi, ma); s.setValue(v); s.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         s.valueChanged.connect(lambda val: lbl_val.setText(str(val/10 if "Sigma" in txt else val))); lay.addWidget(s)
         return s, lbl_val
+
+    def update_stats(self):
+        sample = self.data[0][::4, ::4]
+        self.disp_min = np.percentile(sample, 2); self.disp_max = np.percentile(sample, 99.9)
+        self.sld_stretch.setValue(80) 
 
     def load_stars_ref(self):
         path, _ = QFileDialog.getOpenFileName(self, "Select Star Reference", "", "*.fit *.fits *.tif *.tiff")
@@ -117,8 +131,7 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         thresh = np.nanmean(self.data_stars) + (self.sld_sens.value() / 10.0) * np.nanstd(self.data_stars)
         peaks = (self.data_stars > thresh) & (maximum_filter(self.data_stars, size=20) == self.data_stars)
         self.detected_coords = np.argwhere(peaks)
-        count = len(self.detected_coords)
-        self.btn_load.setText(f"✅ {count} STARS DETECTED"); self.btn_load.setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold;")
+        self.btn_load.setText(f"✅ {len(self.detected_coords)} STARS DETECTED"); self.btn_load.setStyleSheet("background-color: #4CAF50; color: white; font-weight: bold;")
 
     def setup_cv(self):
         cv2.namedWindow("AEROPIC View", cv2.WINDOW_NORMAL); cv2.setMouseCallback("AEROPIC View", self.on_mouse)
@@ -171,12 +184,10 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         if not self.p1 or not self.p2: 
             QMessageBox.warning(self, "No Vector", "Please define trail vector (Ctrl+Click and Shift+Click).")
             return
-        
         QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
         self.btn_run.setText("⏳ PROCESSING...")
         self.btn_run.setEnabled(False)
         QApplication.processEvents() 
-        
         try:
             self.history.append(self.data.copy()); self.redo_stack.clear()
             noise_ref = self.data.copy()
@@ -187,33 +198,22 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
                     dist = np.sqrt((yy - my)**2 + (xx - mx)**2)
                     full_m = np.maximum(full_m, np.clip((mr - dist) / 5.0, 0, 1))
                 for i in range(self.c): self.data[i] = self.data[i] * (1 - full_m) + self.original_data[i] * full_m
-            
-            # Correction : Rétablissement du curseur AVANT le message bloquant
             QApplication.restoreOverrideCursor()
             QMessageBox.information(self, "Done", f"{len(self.detected_coords)} stars cleaned.")
-            
         finally:
-            # Sécurité pour vider la pile de curseurs override
-            while QApplication.overrideCursor() is not None:
-                QApplication.restoreOverrideCursor()
-            self.btn_run.setText("🚀 RUN - CLEAN STAR TRAILS")
-            self.btn_run.setEnabled(True)
+            while QApplication.overrideCursor() is not None: QApplication.restoreOverrideCursor()
+            self.btn_run.setText("🚀 RUN - CLEAN STAR TRAILS"); self.btn_run.setEnabled(True)
 
     def loop(self):
         img = np.transpose(self.data, (1, 2, 0))[:, :, ::-1] if self.c > 1 else self.data
         s_max = self.disp_min + (self.disp_max - self.disp_min) * ((101 - self.sld_stretch.value()) / 100.0)
         disp = (np.clip((np.flipud(img)-self.disp_min)/(s_max-self.disp_min), 0, 1)*255).astype(np.uint8)
         if disp.ndim == 2: disp = cv2.cvtColor(disp, cv2.COLOR_GRAY2BGR)
-        
-        z = self.get_zoom_factor()
-        disp_z = cv2.resize(disp, None, fx=z, fy=z, interpolation=cv2.INTER_LINEAR)
-        
-        vh, vw = 900, 1400
-        view = np.zeros((vh, vw, 3), dtype=np.uint8)
-        src_h, src_w = disp_z.shape[:2]
-        
+        z = self.get_zoom_factor(); disp_z = cv2.resize(disp, None, fx=z, fy=z, interpolation=cv2.INTER_LINEAR)
+        vh, vw = 900, 1400; src_h, src_w = disp_z.shape[:2]
         if src_h <= vh and src_w <= vw:
             y_off, x_off = (vh - src_h) // 2, (vw - src_w) // 2
+            view = np.zeros((vh, vw, 3), dtype=np.uint8)
             view[y_off:y_off+src_h, x_off:x_off+src_w] = disp_z
             self.offset = [-y_off, -x_off]
         else:
@@ -225,23 +225,18 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
             r_viz = int(self.sld_r.value() * z) 
             for ry, rx in self.detected_coords:
                 cv_x, cv_y = int(rx * z - self.offset[1]), int((self.h - ry) * z - self.offset[0])
-                if 0 <= cv_x < vw and 0 <= cv_y < vh:
-                    cv2.circle(view, (cv_x, cv_y), r_viz, (0, 255, 255), 1, cv2.LINE_AA)
+                if 0 <= cv_x < vw and 0 <= cv_y < vh: cv2.circle(view, (cv_x, cv_y), r_viz, (0, 255, 255), 1, cv2.LINE_AA)
 
         for my, mx, mr in self.masks:
             cv2.circle(view, (int(mx*z-self.offset[1]), int((self.h-my)*z-self.offset[0])), int(mr*z), (0, 0, 255), 2)
-        
         if QApplication.queryKeyboardModifiers() & Qt.KeyboardModifier.AltModifier:
             cv2.circle(view, self.mouse_pos, int(self.sld_mask_r.value()*z), (255, 255, 255), 1, cv2.LINE_AA)
-            
         if self.p1:
             p1v = (int(self.p1[1]*z-self.offset[1]), int((self.h-self.p1[0])*z-self.offset[0]))
             if 0 <= p1v[0] < vw and 0 <= p1v[1] < vh: cv2.circle(view, p1v, 4, (255, 0, 0), -1)
             if self.p2:
                 p2v = (int(self.p2[1]*z-self.offset[1]), int((self.h-self.p2[0])*z-self.offset[0]))
-                if (0 <= p1v[0] < vw and 0 <= p1v[1] < vh) or (0 <= p2v[0] < vw and 0 <= p2v[1] < vh):
-                    cv2.line(view, p1v, p2v, (0, 255, 0), 2)
-        
+                cv2.line(view, p1v, p2v, (0, 255, 0), 2)
         cv2.imshow("AEROPIC View", view); cv2.waitKey(1)
 
     def undo(self): 
