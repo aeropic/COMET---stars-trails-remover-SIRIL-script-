@@ -1,6 +1,6 @@
 # AEROPIC - COMET stars trails remover
 
-This Python-based utility is designed to work seamlessly with **Siril** via `sirilpy`. It allows for the precise removal of star trails in comet-aligned stacked picture while preserving the natural noise grain of the background, preventing "flat" or "plastic" artifacts.
+This Python-based utility is designed to work with **Siril**. It allows for the precise removal of star trails in comet-aligned stacked picture while preserving the natural noise grain of the background, preventing "flat" or "plastic" artifacts.
 
 ---
 
@@ -57,7 +57,9 @@ You **must** provide a star reference image. (Orange warning)
 ### 4. run the script
 * **RUN**:this will run the sript and erase the trails. It may last up to one minute. At the end you get this
 <img width="422" height="517" alt="3hfd6zy5kD pngclean-finish" src="https://github.com/user-attachments/assets/6499a414-2108-4830-a231-31553d5b9d22" />
-press **OK** and the display is updated. See the updated image here after (note it is streched, when displayed in normal conditions, 90% of the trails are gone!)
+press **OK** and the display is updated. See the updated image here after 
+note 1:  it is streched, when displayed in normal conditions, 90% of the trails are gone!
+note 2: some black artifacts are left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges
 <img width="1164" height="816" alt="ZLlpq2dzE9 pngbrush30" src="https://github.com/user-attachments/assets/55c90858-a6b1-4cd7-a683-5ebc5589fc03" />
 
 
@@ -81,6 +83,7 @@ press **OK** and the display is updated. See the updated image here after (note 
 
 
 ---
+
 
 
 
