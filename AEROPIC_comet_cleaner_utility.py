@@ -71,18 +71,17 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         self.sld_z, self.lbl_z = self.add_sld("ZOOM (%)", 1, 150, 30, layout)
         self.sld_z.valueChanged.connect(lambda v: self.lbl_z.setText(f"{v}%"))
 
-        # SECTION RACCOURCIS
         help_frame = QFrame(); help_frame.setFrameStyle(QFrame.Shape.StyledPanel | QFrame.Shadow.Sunken)
-        help_frame.setStyleSheet("background-color: #f0f0f0; border-radius: 4px;")
+        help_frame.setStyleSheet("background-color: #f0f0f0; border-radius: 4px; border: 1px solid #ccc;")
         help_lay = QVBoxLayout(help_frame)
         help_text = QLabel(
-            "<b>SHORTCUTS:</b><br>"
-            "• <b>Ctrl + Click</b> : Set Vector Start (Blue)<br>"
-            "• <b>Shift + Click</b> : Set Vector End (Green)<br>"
-            "• <b>Alt + Click</b> : Manual Mask (Restore image)<br>"
-            "• <b>Right Click Drag</b> : Pan image<br>"
-            "• <b>Z</b> : Undo Mask | <b>Ctrl+Z</b> : Undo Data<br>"
-            "• <b>C</b> : Clear all manual masks"
+            "<b>RACCOURCIS :</b><br>"
+            "• <b>Ctrl + Click</b> : Origine du vecteur (Bleu)<br>"
+            "• <b>Shift + Click</b> : Direction traînée (Vert)<br>"
+            "• <b>Alt + Click</b> : Masque Manuel (Restauration)<br>"
+            "• <b>Clic Droit Glisser</b> : Pan | <b>Molette</b> : Taille brosse<br>"
+            "• <b>Z</b> : Undo Masque | <b>Ctrl+Z</b> : Undo Données<br>"
+            "• <b>C</b> : Effacer tous les masques manuels"
         )
         help_text.setStyleSheet("font-size: 11px; color: #333;")
         help_lay.addWidget(help_text); layout.addWidget(help_frame)
@@ -93,8 +92,7 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         layout.addLayout(h_nav)
 
         self.btn_run = QPushButton("🚀 RUN - CLEAN STAR TRAILS")
-        self.btn_run.setEnabled(False)
-        self.btn_run.setStyleSheet("background: #424242; color: #888; height: 50px; font-weight: bold;")
+        self.btn_run.setEnabled(False); self.btn_run.setStyleSheet("background: #424242; color: #888; height: 50px; font-weight: bold;")
         self.btn_run.clicked.connect(self.run_catalog_clean); layout.addWidget(self.btn_run)
         
         self.btn_save = QPushButton("💾 SAVE TrailLess IMAGE")
@@ -123,8 +121,7 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
                 with fits.open(path) as hdul: self.data_stars = hdul[0].data.astype(np.float32)
                 if self.data_stars.ndim == 3: self.data_stars = self.data_stars[0]
             self.update_star_count()
-            self.btn_run.setEnabled(True)
-            self.btn_run.setStyleSheet("background: #1A237E; color: white; height: 50px; font-weight: bold;")
+            self.btn_run.setEnabled(True); self.btn_run.setStyleSheet("background: #1A237E; color: white; height: 50px; font-weight: bold;")
 
     def update_star_count(self):
         if self.data_stars is None: return
@@ -165,10 +162,11 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         if not self.p1 or not self.p2: return
         v = np.array([self.p2[0] - self.p1[0], self.p2[1] - self.p1[1]])
         length = np.linalg.norm(v)
-        if length < 1e-3: return
+        if length < 1: return
         v_u, n_u = v/length, np.array([-v[1], v[0]])/length
         radius, softness = self.sld_r.value(), self.sld_soft.value() / 100.0
-        t_range, o_range = np.arange(-length/2, length/2), np.arange(-radius, radius + 1)
+        t_range = np.arange(0, length) 
+        o_range = np.arange(-radius, radius + 1)
         T, O = np.meshgrid(t_range, o_range)
         CY, CX = yd + T * v_u[0] + O * n_u[0], xd + T * v_u[1] + O * n_u[1]
         dist_norm = np.abs(O) / radius
@@ -181,12 +179,9 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
             self.data[i, iy, ix] = self.data[i, iy, ix] * (1 - w_m) + ((v1 + v2) / 2.0) * w_m
 
     def run_catalog_clean(self):
-        if not self.p1 or not self.p2: 
-            QMessageBox.warning(self, "No Vector", "Please define trail vector (Ctrl+Click and Shift+Click).")
-            return
+        if not self.p1 or not self.p2: return
         QApplication.setOverrideCursor(Qt.CursorShape.WaitCursor)
-        self.btn_run.setText("⏳ PROCESSING...")
-        self.btn_run.setEnabled(False)
+        self.btn_run.setText("⏳ PROCESSING..."); self.btn_run.setEnabled(False)
         QApplication.processEvents() 
         try:
             self.history.append(self.data.copy()); self.redo_stack.clear()
@@ -212,13 +207,10 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         z = self.get_zoom_factor(); disp_z = cv2.resize(disp, None, fx=z, fy=z, interpolation=cv2.INTER_LINEAR)
         vh, vw = 900, 1400; src_h, src_w = disp_z.shape[:2]
         if src_h <= vh and src_w <= vw:
-            y_off, x_off = (vh - src_h) // 2, (vw - src_w) // 2
-            view = np.zeros((vh, vw, 3), dtype=np.uint8)
-            view[y_off:y_off+src_h, x_off:x_off+src_w] = disp_z
-            self.offset = [-y_off, -x_off]
+            y_off, x_off = (vh-src_h)//2, (vw-src_w)//2; view = np.zeros((vh, vw, 3), dtype=np.uint8)
+            view[y_off:y_off+src_h, x_off:x_off+src_w] = disp_z; self.offset = [-y_off, -x_off]
         else:
-            self.offset[0] = np.clip(self.offset[0], 0, max(0, src_h - vh))
-            self.offset[1] = np.clip(self.offset[1], 0, max(0, src_w - vw))
+            self.offset[0] = np.clip(self.offset[0], 0, max(0, src_h-vh)); self.offset[1] = np.clip(self.offset[1], 0, max(0, src_w-vw))
             view = np.ascontiguousarray(disp_z[self.offset[0]:self.offset[0]+vh, self.offset[1]:self.offset[1]+vw])
 
         if self.chk_show_stars.isChecked() and self.data_stars is not None:
