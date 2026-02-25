@@ -39,7 +39,7 @@ You **must** provide a star reference image. (Orange warning)
 
 * if the **show stars centers** is ticked, yellow circles are drawn in the picture. THey reflect the actual position of the **star trail radius** slider
 
-* play with the **sigma slider** to dynamically increase (slider to the left)/decrease (to the right) the star count to get a reasonable amount (e.g., `✅ 352 STARS DETECTED`). This is the number of trails that will be erased in the picture, don't target too high numbers !
+* play with the **sigma slider** to dynamically increase (slider to the left)/decrease (to the right) the star count to get a reasonable amount (e.g., `✅ 117 STARS DETECTED`). This is the number of trails that will be erased in the picture, don't target too high numbers !
 When you start seeing clusters of stars around the comet nucleus, this means you are at the limit of stars detection noise...
 <img width="1081" height="792" alt="cluster" src="https://github.com/user-attachments/assets/eae85c10-91d3-462e-941b-ea86fb548798" />
 
@@ -92,6 +92,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 
 ---
+
 
 
 
