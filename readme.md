@@ -18,6 +18,7 @@ To have **AEROPIC - COMET stars trails remover** appear directly in your Siril t
     * Navigate to the **Scripts** tab.
     * Add or paste the path to your `Aeropic` folder (link to the **folder**, not the script file itself). (eg : C:\Users\ALAIN\AppData\Local\siril-scripts\Aeropic)
 5.  **Restart/Refresh**: After clicking **Apply**, a new entry will appear in your **Scripts menu** containing the tool.
+<img width="758" height="257" alt="install" src="https://github.com/user-attachments/assets/2e134417-d8c0-4fe8-bddf-52e59bb20aa6" />
 
 ---
 
@@ -59,5 +60,6 @@ You **must** provide a star reference image.
 
 
 ---
+
 
 
