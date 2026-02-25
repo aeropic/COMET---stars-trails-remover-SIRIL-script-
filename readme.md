@@ -44,11 +44,12 @@ You **must** provide a star reference image.
 
 | Key | Action |
 | :--- | :--- |
-| **Right Click + Drag** | Pan / Move inside the image |
-| **Z Slider** | Zoom level |
+| **Right Click + Drag** | Pan / Move inside the zoomed image |
+| **Zoom Slider** | Zoom level |
 | **Ctrl + Z** | Undo last data modification |
 | **Z (Key)** | Remove the last restoration mask |
 | **C (Key)** | Clear all restoration masks |
 | **Alt (Hold)** | Shows the brush size preview |
+
 
 ---
