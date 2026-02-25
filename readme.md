@@ -65,7 +65,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 * press **OK** and the display is updated. See the updated image here after
 
-* note 1:  it is streched, when displayed in normal conditions, 90% of the trails are gone!
+* note 1:  it is streched, when displayed in normal conditions, 95% of the trails are gone! Only the really bright stars with diffraction spikes are not corrected by the script see the red arrows (the spikes are shifting during comet stacking making a wide trail...) 
   <img width="1204" height="774" alt="final_no_strech" src="https://github.com/user-attachments/assets/95cebbb6-257a-48b2-9ddf-5c7dec482daf" />
 
 * note 2: some black artifacts are left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges
@@ -93,6 +93,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 
 ---
+
 
 
 
