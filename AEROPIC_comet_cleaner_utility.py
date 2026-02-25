@@ -1,3 +1,10 @@
+###########################################################
+#                                                         #
+#             AEROPIC COMET cleaner utility               #
+#                                                         #
+#                          V1.1                           #
+###########################################################
+
 import sys, os, time
 import numpy as np
 import cv2
@@ -13,13 +20,32 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
     def __init__(self):
         super().__init__()
         
+        # --- BLOC CONNEXION SIRILPY ---
         self.siril = s.SirilInterface()
         try:
             self.siril.connect()
+            print("Connected successfully!")
         except SirilConnectionError as e:
+            print(f"Connection failed: {e}")
             QMessageBox.critical(self, "Siril Error", f"Connection failed: {e}")
             sys.exit(1)
-
+            
+            # --- HEADER LOG ---
+        header_msg = (
+            "\n###########################################################\n"
+            "#                                                         #\n"
+            "#             AEROPIC COMET cleaner utility               #\n"
+            "#                                                         #\n"
+            "#                            V1.1                         #\n"
+            "#                                                         #\n"
+            "###########################################################"
+        )
+        try:
+            self.siril.log(header_msg)
+        except:
+            print(header_msg)        
+        
+        
         self.current_file = self.siril.get_image_filename()
         raw = self.siril.get_image_pixeldata()
         self.data = raw.astype(np.float32)
