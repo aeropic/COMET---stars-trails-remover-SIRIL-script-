@@ -61,6 +61,9 @@ press **OK** and the display is updated. See the updated image here after (note 
 
 
 * **UNDO / REDO**: does what they say :-)
+* **UNDO / REDO**: does what they say :-)
+* **CLEAN RADIUS (px)**: play with this if you see that some trails are still not completely cleaned. In the final image I used a 30px cleaning brush.
+* **SOFTNESS / BLEND %**: increases§decreases the blending effect. The higher the SOFTNESSslider , the longer the transition on the edges. With a RADIUS of 20 and a SOFTNESS of 50%,  10 central pixels are fully replaced, and 2x5 pixels on teh edges are progressively blended.
 * **SAVE trailless image**: when you're happy with the final result. The image is saved with the same name postfixed with "**_TrailLess**"
 ---
 
@@ -77,6 +80,7 @@ press **OK** and the display is updated. See the updated image here after (note 
 
 
 ---
+
 
 
 
