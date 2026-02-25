@@ -30,7 +30,8 @@ The script will use it when opening the script from the **Scripts menu**
 
 ### 1. Loading the Stars Reference
 You **must** provide a star reference image. (Orange warning)
-<img width="715" height="643" alt="nostars" src="https://github.com/user-attachments/assets/651be78a-5232-4021-8fb1-28718ad2ada4" />
+<img width="422" height="672" alt="PPqO4F5PR0 pngload" src="https://github.com/user-attachments/assets/f92f4a47-3112-4b35-8966-706973b2cb37" />
+
 
 
 * **Optimal Reference:** Use a "Star-only" mask obtained from the stacked on stars picture (starmask.Fit). A normal starmask should work, but, if needed you can  slightly stretch a starmask to make  the stars bearely visible. You may also use a raw image saved in fit or tiff (not tested yet)
@@ -92,6 +93,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 
 ---
+
 
 
 
