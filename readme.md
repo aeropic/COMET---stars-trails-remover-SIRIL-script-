@@ -62,15 +62,27 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 * Red circles indicate areas that will be restored from original data, keeping the area intact.
 <img width="1142" height="720" alt="before_OK" src="https://github.com/user-attachments/assets/48ae61fc-bd96-4ec5-8ae6-1934efe8150c" />
 
-### 4. run the script
+### 4. manage bright strars (large trails)
+* bright stars generate large trails that are larger than the standard 20px or so trail width. You can deposit a larger circle to tell the script there is here a large trail...
+* **Shift + control and drag**: Draw an orange circle you have to drag over the yellow circle of a bright star.
+* **Mouse Wheel**: Change the brush size.
+* **Shift + control + left click** an orange circle is drawn, its diameter will be used for this star to compute the trail.
+<img width="332" height="386" alt="orange" src="https://github.com/user-attachments/assets/5a1b9d86-11ab-436e-b8b8-71a93c7cbe4b" />
+
+
+### 5. run the script
 * **RUN**:this will run the sript and erase the trails. It may last up to one minute. At the end you get this
 <img width="422" height="517" alt="3hfd6zy5kD pngclean-finish" src="https://github.com/user-attachments/assets/6499a414-2108-4830-a231-31553d5b9d22" />
+<img width="1194" height="840" alt="comet_before" src="https://github.com/user-attachments/assets/ba7466d8-97e4-4c44-96e7-78a54a4bfc86" />
 
 * press **OK** and the display is updated. See the updated image here after
 <img width="1069" height="734" alt="after_ok" src="https://github.com/user-attachments/assets/87f63618-3994-4a39-8ec0-92feaad2dc4f" />
+<img width="1194" height="840" alt="comet_done" src="https://github.com/user-attachments/assets/f8b8f561-6e87-4ad2-bcdc-2195fa958bf0" />
+
 
 * note 1:  it is streched, when displayed in normal conditions, 95% of the trails are gone! Only the really bright stars with diffraction spikes are not corrected by the script see the red arrows (the spikes are shifting during comet stacking making a wide trail...) 
-  <img width="1204" height="774" alt="final_no_strech" src="https://github.com/user-attachments/assets/95cebbb6-257a-48b2-9ddf-5c7dec482daf" />
+  <img width="1189" height="812" alt="comet_final" src="https://github.com/user-attachments/assets/4bda23b7-e1b0-479a-8aea-81ac1e0e4437" />
+
 
 * note 2: some black artifacts are left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges
 
@@ -93,6 +105,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 
 ---
+
 
 
 
