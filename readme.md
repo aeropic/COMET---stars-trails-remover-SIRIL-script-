@@ -82,16 +82,21 @@ In the final image I used a 30px cleaning brush.
 <img width="1069" height="734" alt="after_ok" src="https://github.com/user-attachments/assets/87f63618-3994-4a39-8ec0-92feaad2dc4f" />
 <img width="1194" height="840" alt="comet_done" src="https://github.com/user-attachments/assets/f8b8f561-6e87-4ad2-bcdc-2195fa958bf0" />
 
+* during the run, some logs are displayed inside the SIRIL's log window. It should finish with 0 stars left. If not please contact me :-)
+<img width="435" height="277" alt="log" src="https://github.com/user-attachments/assets/1bbad3a5-c0f6-4ef8-a5d1-8405498720bd" />
+
 
 * note 1:  it is streched, when displayed in normal conditions, 95% of the trails are gone! Only the really bright stars with diffraction spikes are not corrected by the script see the red arrows (the spikes are shifting during comet stacking making a wide trail...) 
   <img width="1189" height="812" alt="comet_final" src="https://github.com/user-attachments/assets/4bda23b7-e1b0-479a-8aea-81ac1e0e4437" />
 
 
-* note 2: some black artifacts are left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges
+* note 2: I did my best to manage sides of the picture but some black artifacts may be left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges!
 
 * **UNDO / REDO**: do what they say :-)
 * **SOFTNESS / BLEND %**: increases§decreases the blending effect. The higher the SOFTNESSslider , the longer the transition on the edges. With a RADIUS of 20 and a SOFTNESS of 50%,  10 central pixels are fully replaced, and 2x5 pixels on teh edges are progressively blended.
 * **SAVE trailless image**: when you're happy with the final result. The image is saved with the same name postfixed with "**_TrailLess**"
+  <img width="488" height="172" alt="saved" src="https://github.com/user-attachments/assets/c9c84723-39c2-49ec-9788-ec6226b3a5f0" />
+
 ---
 
 ## ⌨️ Shortcuts & Navigation
@@ -107,6 +112,7 @@ In the final image I used a 30px cleaning brush.
 
 
 ---
+
 
 
 
