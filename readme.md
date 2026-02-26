@@ -43,9 +43,9 @@ Note that **the stack reference shall be either the first comet image or the las
 * The **Load Button** becomes green and shows the total amount of detected stars (e.g., `✅ 26 STARS DETECTED`).
 * <img width="422" height="517" alt="stars" src="https://github.com/user-attachments/assets/77264139-4c0e-4411-93e5-886e1126caf4" />
 
-* if the **show stars centers** is ticked, yellow circles are drawn in the picture. THey reflect the actual position of the **star trail radius** slider
+* if the **show stars centers** is ticked, yellow circles are drawn in the picture. They reflect the actual diameter of the **global trail radius** slider
 
-* play with the **sigma slider** to dynamically increase (slider to the left)/decrease (to the right) the star count to get a reasonable amount (e.g., `✅ 117 STARS DETECTED`). This is the number of trails that will be erased in the picture, don't target too high numbers !
+* play with the **sigma slider** to dynamically increase (slider to the left)/decrease (to the right) the star count to get a reasonable amount (e.g., `✅ 117 STARS DETECTED`). This is the number of trails that will be erased in the picture, don't target too high numbers but 1000 is OK !
 When you start seeing clusters of stars around the comet nucleus, this means you are at the limit of stars detection noise...
 <img width="1081" height="792" alt="cluster" src="https://github.com/user-attachments/assets/eae85c10-91d3-462e-941b-ea86fb548798" />
 
@@ -64,16 +64,16 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 In the final image I used a 30px cleaning brush.
 
 ### 3. Local Protection (Comet Mask)
-* **Alt + Left Click**: Draw a "Restore" mask over the aeras you want to keep unchanged (eg: comet's head or tail).
+* **Alt + Left Click**: Draw a "Restore" mask over the aeras you want to keep unchanged (eg: comet's head or part of the tail).
 * **Mouse Wheel**: Change the brush size.
 * Red circles indicate areas that will be restored from original data, keeping the area intact.
 <img width="1142" height="720" alt="before_OK" src="https://github.com/user-attachments/assets/48ae61fc-bd96-4ec5-8ae6-1934efe8150c" />
 
 ### 4. manage bright strars (large trails)
 * bright stars generate large trails that are larger than the standard 20px or so trail width. You can deposit a larger circle to tell the script there is here a large trail please erase it with a larger path...
-* **Shift + control and drag**: Draw an orange circle you have to drag over the yellow circle of a bright star.
+* **Shift + Ctrl and drag**: Draw an orange circle you have to drag over the yellow circle of a bright star.
 * **Mouse Wheel**: Change the brush size.
-* **Shift + control + left click** an orange circle is drawn, its diameter will be used for this star to compute the trail.
+* **Shift + Ctrl + left click** an orange circle is drawn, its diameter will be used for this star to compute the trail.
 <img width="332" height="386" alt="orange" src="https://github.com/user-attachments/assets/5a1b9d86-11ab-436e-b8b8-71a93c7cbe4b" />
 
 
@@ -89,15 +89,14 @@ In the final image I used a 30px cleaning brush.
 * during the run, some logs are displayed inside the SIRIL's log window. It should finish with 0 stars left. If not please contact me :-)
 <img width="435" height="277" alt="log" src="https://github.com/user-attachments/assets/1bbad3a5-c0f6-4ef8-a5d1-8405498720bd" />
 
-
-* note 1:  it is streched, when displayed in normal conditions, 95% of the trails are gone! Only the really bright stars with diffraction spikes are not corrected by the script see the red arrows (the spikes are shifting during comet stacking making a wide trail...) 
-  <img width="1189" height="812" alt="comet_final" src="https://github.com/user-attachments/assets/4bda23b7-e1b0-479a-8aea-81ac1e0e4437" />
+* note 1:  it is streched, when displayed in normal conditions, 95% of the trails are gone! Even the really bright stars with diffraction spikes are corrected by the script if you used the **Shift+Ctrl** tool...) 
+ <img width="1189" height="812" alt="comet_final" src="https://github.com/user-attachments/assets/64831eeb-03ee-4c01-9fd1-fa931c391d9d" />
 
 
 * note 2: I did my best to manage sides of the picture but some black artifacts may be left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges!
 
 * **UNDO / REDO**: do what they say :-)
-* **SOFTNESS / BLEND %**: increases§decreases the blending effect. The higher the SOFTNESSslider , the longer the transition on the edges. With a RADIUS of 20 and a SOFTNESS of 50%,  10 central pixels are fully replaced, and 2x5 pixels on teh edges are progressively blended.
+* **SOFTNESS / BLEND %**: increases§decreases the blending effect. The higher the SOFTNESSslider , the longer the transition on the edges. With a RADIUS of 20 and a SOFTNESS of 50%,  10 central pixels are fully replaced, and 2x5 pixels on the edges are progressively blended. Small values give good results...
 * **SAVE trailless image**: when you're happy with the final result. The image is saved with the same name postfixed with "**_TrailLess**"
   <img width="488" height="172" alt="saved" src="https://github.com/user-attachments/assets/c9c84723-39c2-49ec-9788-ec6226b3a5f0" />
 
@@ -116,6 +115,7 @@ In the final image I used a 30px cleaning brush.
 
 
 ---
+
 
 
 
