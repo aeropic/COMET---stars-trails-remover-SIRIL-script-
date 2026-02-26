@@ -30,8 +30,10 @@ The script will use it when opening the script from the **Scripts menu**
 
 ### 1. Loading the Stars Reference
 You **must** provide a star reference image. (Orange warning)
+
 <img width="452" height="681" alt="start" src="https://github.com/user-attachments/assets/464f5168-4283-44e8-99bd-e602cd7bf53b" />
-(This is the actual layout of the control windows. Some screenshots here after may reflect an older version)
+
+* (This is the actual layout of the control windows. Some screenshots here after may reflect an older version)
 
 
 
@@ -114,6 +116,7 @@ In the final image I used a 30px cleaning brush.
 
 
 ---
+
 
 
 
