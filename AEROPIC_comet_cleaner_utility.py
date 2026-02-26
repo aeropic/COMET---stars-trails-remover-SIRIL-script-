@@ -31,7 +31,7 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
             "#                                                         #\n"
             "#             AEROPIC COMET cleaner utility               #\n"
             "#                                                         #\n"
-            "#                            V2.0                         #\n"
+            "#                         V2.0                            #\n"
             "#                                                         #\n"
             "###########################################################"
         )
@@ -75,7 +75,8 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
     def init_ui(self):
         """Build the control panel using PyQt6. Focus on accessibility and real-time feedback."""
         self.setWindowTitle("AEROPIC - COMET cleaner utility")
-        self.setFixedWidth(420); self.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint)
+        # ADAPTED: Increased width to 450 to accommodate the longer User Manual text.
+        self.setFixedWidth(450); self.setWindowFlags(Qt.WindowType.WindowStaysOnTopHint)
         central = QWidget(); self.setCentralWidget(central); layout = QVBoxLayout(central)
         
         # Star reference loader: Needs a non-comet-aligned image (e.g. one star-aligned frame)
@@ -100,7 +101,7 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         
         # Tool sizes & Zoom: 
         # Restore brush allows painting back the comet or important nebulosity.
-        self.sld_mask_r, _ = self.add_sld("RESTORE BRUSH SIZE", 10, 800, 100, layout)
+        self.sld_mask_r, _ = self.add_sld("PRESERVE AREA BRUSH SIZE", 10, 800, 100, layout)
         self.sld_stretch, _ = self.add_sld("DISPLAY STRETCH", 1, 100, 80, layout)
         self.sld_z, self.lbl_z = self.add_sld("ZOOM (%)", 1, 150, 30, layout)
 
@@ -117,13 +118,16 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
         
         self.btn_save = QPushButton("💾 SAVE TrailLess IMAGE"); self.btn_save.clicked.connect(self.save_fits); layout.addWidget(self.btn_save)
 
-        # Hotkeys help: Documentation of the mouse interaction system.
+        # Hotkeys help: ADAPTED Manual tools description.
         help_frame = QFrame(); help_frame.setFrameStyle(QFrame.Shape.StyledPanel | QFrame.Shadow.Sunken)
         help_lay = QVBoxLayout(help_frame)
         help_lay.addWidget(QLabel("<b>MANUAL TOOLS:</b><br>"
                                   "CTRL + Click: Set P1 | SHIFT + Click: Set P2<br>"
-                                  "ALT + Click: Restore pixels | Right-Click: Pan<br>"
-                                  "Ctrl+Shift+Scroll: Ghost size | Ctrl+Shift+Click: Apply"))
+                                  "ALT : draw preserve area ghost | ALT+Click: Apply<br>"
+                                  "ALT + Scroll : change size of preserve area<br>"
+                                  "ALT + left click : draw the final preserve area<br>"
+                                  "Right-Click: Pan in zoomed image<br>"
+                                  "Ctrl+Shift+Scroll: bright stars Ghost size | Ctrl+Shift+Click: Apply"))
         layout.addWidget(help_frame)
 
     def add_sld(self, txt, mi, ma, v, lay):
@@ -217,7 +221,7 @@ class AEROPIC_Master_Comet_EN(QMainWindow):
                     for i in range(self.c):
                         # Interpolate background values from clean sides
                         vg = map_coordinates(self.data[i], [np.clip(gy, 0, self.h-1), np.clip(gx, 0, self.w-1)], order=1)
-                        vd = map_coordinates(self.data[i], [np.clip(dy, 0, self.h-1), np.clip(dx, 0, self.w-1)], order=1)
+                        vd = map_coordinates(self.data[i], [np.clip(dy, 0, self.h-1), np.clip(gx, 0, self.w-1)], order=1)
                         val = np.zeros_like(vg)
                         both = clean_g & clean_d; only_g = clean_g & ~clean_d; only_d = clean_d & ~clean_g
                         val[both] = (vg[both] + vd[both]) / 2.0
