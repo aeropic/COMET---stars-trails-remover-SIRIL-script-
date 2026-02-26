@@ -48,13 +48,16 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 ### 2. Defining the Trail (The Vector)
 * **DISPLAY STRETCH**: if you do not see the trails enough, play with the display stretch slider. It is just used for the display!
-* **Ctrl + Left Click**: Set the start of a star trail (Blue point). It shall be placed at the center of one yellow circle
+* **Ctrl + Left Click**: Set the start of a star trail (P1 : Blue point). It shall be placed at the center of one yellow circle
   <img width="494" height="443" alt="blue" src="https://github.com/user-attachments/assets/31524142-9d7f-41fd-81a2-490e5c791710" />
 
-* **Shift + Left Click**: Set the end of the same star trail (Green line).
+* **Shift + Left Click**: Set the end of the same star trail (P2 : Green line). Keep some margin and make is a bit longer than the trail...
 * This defines the **length and angle** applied to all detected stars.
 * start and end points can be modified if needed (just repeat the Ctrl + click or shift+click)
 <img width="1148" height="695" alt="trail" src="https://github.com/user-attachments/assets/6f551c97-7759-4d7d-92d4-825035eb6853" />
+
+* **GLOBAL TRAIL RADIUS (px)**: play with this if you see that some trails are still not completely cleaned. This value applies to all stars but the bright ones.
+In the final image I used a 30px cleaning brush.
 
 ### 3. Local Protection (Comet Mask)
 * **Alt + Left Click**: Draw a "Restore" mask over the aeras you want to keep unchanged (eg: comet's head or tail).
@@ -63,7 +66,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 <img width="1142" height="720" alt="before_OK" src="https://github.com/user-attachments/assets/48ae61fc-bd96-4ec5-8ae6-1934efe8150c" />
 
 ### 4. manage bright strars (large trails)
-* bright stars generate large trails that are larger than the standard 20px or so trail width. You can deposit a larger circle to tell the script there is here a large trail...
+* bright stars generate large trails that are larger than the standard 20px or so trail width. You can deposit a larger circle to tell the script there is here a large trail please erase it with a larger path...
 * **Shift + control and drag**: Draw an orange circle you have to drag over the yellow circle of a bright star.
 * **Mouse Wheel**: Change the brush size.
 * **Shift + control + left click** an orange circle is drawn, its diameter will be used for this star to compute the trail.
@@ -87,7 +90,6 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 * note 2: some black artifacts are left by the algorithm on the edges of the picture. keep the picture as is, then add the stars back, then crop the edges
 
 * **UNDO / REDO**: do what they say :-)
-* **CLEAN RADIUS (px)**: play with this if you see that some trails are still not completely cleaned. In the final image I used a 30px cleaning brush.
 * **SOFTNESS / BLEND %**: increases§decreases the blending effect. The higher the SOFTNESSslider , the longer the transition on the edges. With a RADIUS of 20 and a SOFTNESS of 50%,  10 central pixels are fully replaced, and 2x5 pixels on teh edges are progressively blended.
 * **SAVE trailless image**: when you're happy with the final result. The image is saved with the same name postfixed with "**_TrailLess**"
 ---
@@ -105,6 +107,7 @@ When you start seeing clusters of stars around the comet nucleus, this means you
 
 
 ---
+
 
 
 
